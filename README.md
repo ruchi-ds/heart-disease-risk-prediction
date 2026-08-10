@@ -6,7 +6,7 @@ The project compares multiple classification algorithms, evaluates their perform
 
 ## 🚀 Live Demo
 
-👉 **[Open Heart Disease Risk Prediction App](YOUR_STREAMLIT_APP_URL)**
+👉 **[Open Heart Disease Risk Prediction App](https://heart-disease-risk-prediction-s7kad2idpyaynjt4sgmuiu.streamlit.app/)**
 
 ## ✨ Features
 
