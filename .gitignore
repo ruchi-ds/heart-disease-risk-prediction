@@ -20,11 +20,6 @@ ENV/
 # Streamlit
 .streamlit/secrets.toml
 
-# Model / Cache files
-*.pkl
-*.pickle
-*.joblib
-
 # Temporary Files
 *.tmp
 *.temp
