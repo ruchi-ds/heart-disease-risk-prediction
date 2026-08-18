@@ -1,5 +1,5 @@
 ﻿from pathlib import Path
-
+import base64
 import joblib
 import pandas as pd
 import streamlit as st
@@ -51,20 +51,36 @@ FEATURES = [
 ]
 
 
+# # ============================================================
+# # VISUAL ASSETS
+# # ============================================================
+
+# LOGO_URL = "assets/logo.png"
+# HERO_IMAGE_URL = "assets/heart-health.png"
+
 # ============================================================
 # VISUAL ASSETS
 # ============================================================
 
-LOGO_URL = (
-    "https://lh3.googleusercontent.com/aida/"
-    "AP1WRLuB5OFKh5QvNiraFF9CfJJAsp9h-EXLtdU7CmVtxXv-mbTaX_HQkGTXKLMoQgynYG1Ush-GQZFeOo3DDwh7HDJRI7VPt3Wrgm5KzElvxchpNn2to9oqwcIkBbUOW9uu5gdluc8EiipDO8jw330_J_Mug8huX6E-iCappl9I0TO4rayOgSAUYjVe0LJpVldIpNdiLiEtTHn5OBug2mUkDYqZq_dC2t67fE1CNDt2RfnY8lDUI-c4Jn_WEQs"
-)
+BASE_DIR = Path(__file__).resolve().parent
 
-HERO_IMAGE_URL = (
-    "https://lh3.googleusercontent.com/aida/"
-    "AP1WRLuNSFW-zW9iBNQLbl9Imi63fTuzT7KxOepRY0XvsgSkoQuX8GzfURLmzTLNtQFgYIRC6bW-yyIZTfqTpvr6IV8Ea7pAruzqOOPOEGu13K1J4TlORaPSFJvzBkubBtYPpFg2GdR3DxdoPQELY081me8vkBb7ljUb_d3LLjcWG8n7dJoFqg1MQQtNslwezr_be8cAux0I-oBgzmiHrKgSUYYFHrxmFsk3ceGJtW4vJSxd2iGKsq1NMhT9_qk"
-)
 
+def image_to_data_uri(filename):
+    image_path = BASE_DIR / "assets" / filename
+
+    if not image_path.exists():
+        raise FileNotFoundError(
+            f"Image not found: {image_path}"
+        )
+
+    image_bytes = image_path.read_bytes()
+    encoded_image = base64.b64encode(image_bytes).decode("utf-8")
+
+    return f"data:image/png;base64,{encoded_image}"
+
+
+LOGO_URL = image_to_data_uri("logo.png")
+HERO_IMAGE_URL = image_to_data_uri("heart-health.png")
 
 # ============================================================
 # CSS - LIGHT THEME OVERRIDES & CONTRAST FIXES
